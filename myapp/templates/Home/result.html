@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Description</title>
-	</head>
-	<body>
-		<h1>{{task.description}}</h1>
-	</body>
-</html>
+{% extends "Home/base.html" %}
+
+{% block title %}ToDo|Description{% endblock %}
+{% block body %}
+	<h1 style="color: yellow">{{item_description|default:"No information"}}</h1>
+{% endblock %}

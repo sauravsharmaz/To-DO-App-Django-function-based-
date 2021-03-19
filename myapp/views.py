@@ -9,21 +9,30 @@ def index(request):
 	tasks={'all_tasks':tasks}
 	return render(request, 'Home/index.html',tasks)		
 
-def desc(request):
+def Add_todo(request):
 	# create a new todo item
 	titl= request.POST['title']
 	descr= request.POST['description']
 	comp= request.POST['is_completed']
-	new_item= Task(title=titl,description=descr,is_completed=comp)
+	time= request.POST['time']
+	new_item= Task(title=titl,description=descr,is_completed=comp,time= time)
 	# save
 	new_item.save()
 	# redirect the browser to '/'
 	return HttpResponseRedirect('/')
 
+def delete_item(request,todo_id):
+	# find the item by id
+	item_to_del= Task.objects.get(id= todo_id)
+	print('todo id = ',todo_id)
+	print('item to del = ',item_to_del)
+	item_to_del.delete()
+	return HttpResponseRedirect('/')
 
-
-
-
+def item_desc(request,todo_id):
+	item= Task.objects.get(id=todo_id)
+	item_details= {'item_description':item.description}
+	return render(request, 'Home/result.html',item_details)
 
 
 
