@@ -2,6 +2,9 @@
 
 <html lang="en">
 	<head>
+		<!-- icons -->
+		<link rel="shortcut icon" href="{% static 'myapp/favicon.png' %}" type="image/x-icon">
+		<link rel="icon" href="{% static 'myapp/favicon.ico' %}" type="image/x-icon">
 		<!-- Required meta tags -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,7 +32,7 @@
 		
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container-fluid">
-				<img style="height: 50px;width: 150px" id="logo" src="{% static 'myapp/logo/logo.png' %}" alt="logo-img">
+				<img id="logo" src="{% static 'myapp/logo/logo.png' %}" alt="logo-img">
 				<a class="navbar-brand" href="#">ToDo List</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>

@@ -5,7 +5,31 @@ body{
 .navbar-brand{
 	font-size: 3.00rem;
 }
-.navbar navbar-expand-lg navbar-dark bg-dark #logo{
+#logo{
 	height: 50px;
-	width: 250px;
+	width: 100px;
+}
+.AddMore{
+	background-color: yellow;
+	color: black;
+	border-radius: 28.25rem;
+	margin-right: 150px;
+}
+
+.AddMore img{
+	height: 50px;
+	width: 100px;
+	margin-left: 270px;
+	object-fit: cover;
+}
+
+.last{
+	height: 50px;
+	width: 90px;
+	object-fit: cover;
+}
+
+[name= lastBtn]{
+	border-radius: 28.25rem;
+	font-weight: 600;
 }
