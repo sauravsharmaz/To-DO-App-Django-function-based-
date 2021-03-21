@@ -1,0 +1,36 @@
+{% extends "Home/base.html" %}
+{% load static %}
+{% block title %}ToDO|Search{% endblock %}
+
+{% block body %}
+	
+	<div class="container my-auto mx-auto">
+		<div class="container-fluid">
+			<p class="h1 mt-5">Your Created To-Dos</p>
+			<table style="color: white" class="table table-hover table-responsive table-dark table-bordered" id="table">
+				<thead>
+					<tr>
+						<th scope="col">Id</th>
+						<th scope="col">Title</th>
+						<th scope="col">Description</th>
+						<th scope="col">Status</th>
+						<th scope="col">Time</th>
+						<th scope="col">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for task in item %}
+						<tr>
+							<th scope="row">{{forloop.counter}}</th>
+							<td>{{task.title}}</td>
+							<td><a href="desc/{{task.id}}">{{task.description|default:"No information"|slice:"0:10"}}...</a></td>
+							<td>{{task.is_completed}}</td>
+							<td>{{task.time}}</td>
+							<td><a href="del/{{task.id}}">delete</a></td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
