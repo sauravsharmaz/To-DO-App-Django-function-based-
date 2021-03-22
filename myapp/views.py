@@ -36,9 +36,8 @@ def delete_item(request, todo_id):
 
 def item_desc(request, todo_id):
     item = Task.objects.get(id=todo_id)
-    item_details = {'item_description': item.description}
+    item_details = {'item': item}
     return render(request, 'Home/result.html', item_details)
-
 
 def search(request):
     items = []
