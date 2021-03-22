@@ -41,7 +41,15 @@ def item_desc(request, todo_id):
 
 
 def search(request):
-    query = request.GET['search']
-    items = Task.objects.filter(title__icontains=query)
-    searched_items = {'item': items}
-    return render(request, 'Home/search.html', searched_items)
+    items = []
+    query = request.POST['search']
+    if len(query) > 51:
+        items= None
+        searched_items = {'item': items,'query':query}
+        return render(request, 'Home/search.html', searched_items)
+    else:
+        items_filt_title = Task.objects.filter(title__icontains=query)
+        items_filt_desc = Task.objects.filter(description__icontains=query)
+        final_set= items_filt_title.union(items_filt_desc)
+        searched_items = {'item': final_set,'query':query}
+        return render(request, 'Home/search.html', searched_items)

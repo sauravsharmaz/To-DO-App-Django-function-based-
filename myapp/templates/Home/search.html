@@ -6,31 +6,37 @@
 	
 	<div class="container my-auto mx-auto">
 		<div class="container-fluid">
-			<p class="h1 mt-5">Your Created To-Dos</p>
-			<table style="color: white" class="table table-hover table-responsive table-dark table-bordered" id="table">
-				<thead>
-					<tr>
-						<th scope="col">Id</th>
-						<th scope="col">Title</th>
-						<th scope="col">Description</th>
-						<th scope="col">Status</th>
-						<th scope="col">Time</th>
-						<th scope="col">Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for task in item %}
+			{% if item|length < 1 %}
+				<h3 style="color: yellow">your search <b  style="font-style: italic;">'{{query}}'</b> did not match</h3>
+			{% else %}
+				<p class="h1 mt-5">Your Created To-Dos</p>
+				<table style="color: white" class="table table-hover table-responsive table-dark table-bordered" id="table">
+					<thead>
 						<tr>
-							<th scope="row">{{forloop.counter}}</th>
-							<td>{{task.title}}</td>
-							<td><a href="desc/{{task.id}}">{{task.description|default:"No information"|slice:"0:10"}}...</a></td>
-							<td>{{task.is_completed}}</td>
-							<td>{{task.time}}</td>
-							<td><a href="del/{{task.id}}">delete</a></td>
+							<th scope="col">Id</th>
+							<th scope="col">Title</th>
+							<th scope="col">Description</th>
+							<th scope="col">Status</th>
+							<th scope="col">Time</th>
+							<th scope="col">Action</th>
 						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						
+						{% for task in item %}
+							<tr>
+								<th scope="row">{{forloop.counter}}</th>
+								<td>{{task.title}}</td>
+								<td><a href="desc/{{task.id}}">{{task.description|default:"No information"|slice:"0:10"}}...</a></td>
+								<td>{{task.is_completed}}</td>
+								<td>{{task.time}}</td>
+								<td><a href="del/{{task.id}}">delete</a></td>
+							</tr>
+						{% endfor %}
+						
+					</tbody>
+				</table>
+			{% endif %}
 		</div>
 	</div>
 {% endblock %}
